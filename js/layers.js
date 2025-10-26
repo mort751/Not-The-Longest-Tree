@@ -6,7 +6,8 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    color: "#4BDC13",
+    tooltip() { return player.points + 'points' },
+    color: "#dededeff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
@@ -21,16 +22,38 @@ addLayer("p", {
         return new Decimal(1)
     },
     row: 0, // Row the layer is in on the tree (0 is the first row)
-    hotkeys: [
-        {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
-    ],
     layerShown(){return true},
+
+    tabFormat: {
+    "Main": {
+        content: [
+    ["display-text",
+        function() { return 'You have <b>' + format(player.points) + '</b> points.' },
+        { "font-size": "24px" }
+    ],
+    "blank",
+    "milestones",
+    "blank",
+    "blank",
+    "upgrades",
+        ],
+    },
+    },
+
+    componentStyles: {
+    "upgrade"() { return {'border-radius': '10px'} },
+    },
+
     upgrades: {
         11: {
-            description: "abc",
+            title: 'Point Upgrade 11',
+            description: "Start generating points.",
             cost: function() {
-                let cost = new Decimal(1)
+                let cost = new Decimal(10)
                 return cost
+            },
+            effectDisplay() {
+                return format(getPointGen()) + '/sec'
             }
         }
     }
