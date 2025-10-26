@@ -46,17 +46,34 @@ addLayer("p", {
 
     upgrades: {
         11: {
-            title: 'Point Upgrade 11',
+            title: 'Point Upgrade A1',
             description: "Start generating points.",
             currencyInternalName: 'points',
             currencyDisplayName: 'points',
             cost: function() {
-                let cost = new Decimal(10)
+                let cost = new Decimal(0)
                 return cost
             },
             effectDisplay() {
                 return format(getPointGen()) + '/sec'
             }
-        }
+        },
+        12: {
+            title: 'Point Upgrade A2',
+            description: "Doubles point generation.",
+            currencyInternalName: 'points',
+            currencyDisplayName: 'points',
+            cost: function() {
+                let cost = new Decimal(5)
+                return cost
+            },
+            effect() {
+                let effect = new Decimal(2)
+                return effect
+            },
+            effectDisplay() {
+                return format(this.effect()) + '*'
+            },
+        },
     }
 })
