@@ -46,7 +46,7 @@ addLayer("p", {
 
     upgrades: {
         11: {
-            title: 'Point Upgrade A1',
+            title: 'A1',
             description: "Start generating points.",
             currencyInternalName: 'points',
             currencyDisplayName: 'points',
@@ -59,7 +59,7 @@ addLayer("p", {
             }
         },
         12: {
-            title: 'Point Upgrade A2',
+            title: 'A2',
             description: "Multiplies point generation by 2.",
             currencyInternalName: 'points',
             currencyDisplayName: 'points',
