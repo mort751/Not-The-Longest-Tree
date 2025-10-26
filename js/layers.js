@@ -60,7 +60,7 @@ addLayer("p", {
         },
         12: {
             title: 'Point Upgrade A2',
-            description: "Doubles point generation.",
+            description: "Multiplies point generation by 2.",
             currencyInternalName: 'points',
             currencyDisplayName: 'points',
             cost: function() {
