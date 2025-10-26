@@ -6,7 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     }},
-    tooltip() { return player.points + 'points' },
+    tooltip() { return format(player.points) + ' points' },
     color: "#dededeff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
     resource: "prestige points", // Name of prestige currency
@@ -41,13 +41,15 @@ addLayer("p", {
     },
 
     componentStyles: {
-    "upgrade"() { return {'border-radius': '10px'} },
+    "upgrade"() { return {'height':'135px', 'width':'135px', 'border-radius': '10px'} },
     },
 
     upgrades: {
         11: {
             title: 'Point Upgrade 11',
             description: "Start generating points.",
+            currencyInternalName: 'points',
+            currencyDisplayName: 'points',
             cost: function() {
                 let cost = new Decimal(10)
                 return cost
